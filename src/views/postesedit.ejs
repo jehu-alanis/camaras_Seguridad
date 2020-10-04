@@ -1,0 +1,65 @@
+<% include partials/_header %>
+
+<div class="container mt-7">
+  <div class="col-md-16">
+
+          <form action="/updatepost/<%= data.id_poste %>"  name=formulario method="POST">
+  
+          <div class="row">
+            
+                  <table class="table table-bordered table-hover">
+                  
+                          <tbody>
+                
+                          <tr class="table-primary">
+                              <th scope="col " >POSTES</th>
+                              
+                        </tr>
+                              
+                                    <tr> 
+                                        <td>CLAVE POSTE: <div class="form-group"><input type="text" name="clave_poste" value="<%= data.clave_poste%>" class="form-control" required></div></td>
+                                      <td>CALLE PRINCIPAL: <div class="form-group"><input type="text"  name="calle_principal" value="<%= data.calle_principal%>" class="form-control"required></div></td>
+                                      <td>CALLE LATERAL 1: <div class="form-group"><input type="text"  name="calle_lateral1" value="<%= data.calle_lateral1%>" class="form-control"required></div></td>
+                                      <td>CALLE LATERAL 2: <div class="form-group"><input type="text"  name="calle_lateral2" value="<%= data.calle_lateral2%>" class="form-control"required></div></td>
+                                     
+                                    </tr>
+                                    <tr> 
+                                        <td>COLONIA:  <div class="form-group">
+                                            <select class="  mul-select custom-select " name="id_cat_colonia">
+                                                                                         
+                                                     <% for(var i = 0; i < colonias.length; i++) { %> 
+                                                             <option value="<%=colonias[i].id_colonias %>"><%=colonias[i].nombre_col %></option>
+                                                             <% } %>  
+                                                                       
+                                             </select> </div> </td>
+                                          
+                                          <td>LONGITUD: <div class="form-group"><input type="text" name="longitud" value="<%= data.longitud%>" class="form-control"required></div></td>
+                                          <td>LATITUD: <div class="form-group"><input type="text"  name="latitud" value="<%= data.latitud%>" class="form-control"required></div></td>
+                                          <td>AÑO INSTALACION: <div class="form-group"><input type="number"  name="ano_instalacion" value="<%= data.ano_instalacion%>" class="form-control"required></div></td>
+                                        
+                                      </tr>
+                                    
+              
+                                  </tbody>
+                                  </table>
+      
+                                  
+                                  <button type="submit" class="btn btn-success ml-auto btn-sm"><i class='far fa-save' style='font-size:24px'></i> GUARDAR</button>
+                                  <a href="/postes" class="btn btn-danger btn-sm "><i class='fas fa-reply' style='font-size:24px'></i> CANCELAR</a>
+                                  
+  </form>
+  </div>
+  </div>
+
+
+<% include partials/_footer %>
+       
+<script>
+    $(document).ready(function(){
+        $(".mul-select").select2({
+                placeholder: "selecciona" //placeholder
+                
+            });
+        })
+</script>
+

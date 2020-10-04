@@ -1,0 +1,169 @@
+<% include partials/_header_tecnico %>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+
+
+
+<div class="container ">
+    <div class="row">
+  		<div class="col-sm-3"><!--left col-->
+              
+
+   <br>
+
+               
+       
+          
+          
+          
+        </div><!--/col-3-->
+    	<div class="col-sm-9">
+            
+                <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="basicInfo-tab" data-toggle="tab" href="#basicInfo" role="tab" aria-controls="basicInfo" aria-selected="true">Informacion Basica</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="connectedServices-tab" data-toggle="tab" href="#connectedServices" role="tab" aria-controls="connectedServices" aria-selected="false">Usuario y contraseña</a>
+                        </li>
+                    </ul>
+
+              
+         <div class="tab-content ml-1" id="myTabContent">
+             <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
+                <hr>
+                  <form class="form" action="/updateperfil_te/<%= data.id_personal %>" method="post" id="registrationForm">
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="first_name"><h4>Nombre</h4></label>
+                              <input type="text" class="form-control" name="nombre" value="<%= data.nombre%>"  >
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="last_name"><h4>Apellido paterno</h4></label>
+                              <input type="text" class="form-control" name="ap_paterno" value="<%= data.ap_paterno%>"  >
+                          </div>
+                      </div>
+          
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="phone"><h4>Apellido materno</h4></label>
+                              <input type="text" class="form-control" name="ap_materno" value="<%= data.ap_materno%>" >
+                          </div>
+                      </div>
+          
+                      
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="email"><h4>Pregunta secreta</h4></label>
+                              <select class="  mul-select custom-select " name="pregunta_secreta">
+                                                                                         
+                                <% for(var i = 0; i < preguntas.length; i++) { %> 
+                                        <option value="<%=preguntas[i].idpreguntas %>"><%=preguntas[i].nom_preguntas %></option>
+                                        <% } %>  
+                                                  
+                        </select></div>
+                      </div>
+                      
+                      <div class="form-group">
+                          
+                        <div class="col-xs-6">
+                            <label for="email"><h4>Respuesta a pregunta</h4></label>
+                            <input type="text" class="form-control" name="respuesta_secreta" value="<%= data.respuesta_secreta%>">
+                        </div>
+                    </div>
+                      
+                      
+                    <div class="container">
+                            <div class="btn-block float-right">  
+                                    <br>    
+                          <a href="/perfil_te" class="btn btn-danger  float-right btn-sm "><i class='fas fa-reply' style='font-size:24px'></i> CANCELAR</a>
+                          <button type="submit" class="btn btn-success  float-right btn-sm"><i class='far fa-save' style='font-size:24px'></i> GUARDAR</button>
+                        
+                        </div>
+                    </div>
+              	</form>
+              
+              <hr>
+              
+             </div><!--/tab-pane-->
+             <div class="tab-pane fade" id="connectedServices" role="tabpanel" aria-labelledby="ConnectedServices-tab">
+               
+               <h2></h2>
+               
+               <hr>
+                  <form class="form" action="/editusername_te" method="post" id="registrationForm2">
+                      
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="email"><h4>Email</h4></label>
+                              <input type="email" class="form-control" name="username" value="<%= data.username%>">
+                          </div>
+                      </div>
+                      
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                              <label for="password"><h4>Nueva Contraseña</h4></label>
+                              <input type="password" class="form-control" name="password" id="password" >
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          
+                          <div class="col-xs-6">
+                            <label for="password2"><h4>Verifica tu nueva contraseña</h4></label>
+                              <input type="password" class="form-control" name="password2" id="password2" >
+                          </div>
+                      </div>
+                      <div class="container">
+                            <div class="btn-block float-right"> 
+                                <br>     
+                          <a href="/perfil_te" class="btn btn-danger  float-right btn-sm "><i class='fas fa-reply' style='font-size:24px'></i> CANCELAR</a>
+                          <button type="submit" class="btn btn-success  float-right btn-sm"><i class='far fa-save' style='font-size:24px'></i> GUARDAR</button>
+                        
+                        </div>
+                    </div>
+              	</form>
+               
+             </div><!--/tab-pane-->
+               
+              </div><!--/tab-pane-->
+          </div><!--/tab-content-->
+
+        </div><!--/col-9-->
+    </div><!--/row-->
+<% include partials/_footer_tecnico %>
+       
+<script type="text/javascript">
+    function comprobarClave(e){
+   var p1 = document.getElementById("password").value;
+var p2 = document.getElementById("password2").value;
+
+if (p1 != p2) {
+  alert("Las contraseñas deben de coincidir");
+  e.preventDefault();
+  return false;
+} else {
+  alert("Correo y contraseña actualizados");
+  return true; 
+}
+
+}
+
+$(function() {
+
+
+$('#registrationForm2').submit(function(e) {
+    comprobarClave(e);
+});
+});
+</script>

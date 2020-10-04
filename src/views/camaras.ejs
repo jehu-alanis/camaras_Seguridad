@@ -1,0 +1,116 @@
+<% include partials/_header %>
+<div class="container mt-7">
+    <div class="table-responsive">
+       
+    
+      <table class="table table-bordered table-hover" id="ta" style="font-size: 11px;" >
+            
+        <thead>
+          <tr class="table-primary "  >
+            <td>SERIE</td>
+            <td>MODELO</td>
+            <td>PROVEDOR</td>
+            <td>VIDA UTIL</td>
+            <td>TIPO DE CAMARA</td>
+            <td>RESOLUCION</td>
+            <td>DESCRIPCION</td>
+            <td>ACCIONES</td>
+            <td>REPORTAR</td>
+            
+                
+            
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% if (data) { %>
+            <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td><%= data[i].n_serie %></td>
+                <td><%= data[i].nombre_modelo %></td>
+                <td><%= data[i].nombre_provedor %></td>
+                <td><%= data[i].vida_util %></td>
+                <td><%= data[i].tipo_camara %></td>
+                <td><%= data[i].name_resolucion %></td>
+                <td><%= data[i].descripcion  %></td>
+                
+                
+                <td>
+                  <a href="/updatecam/<%= data[i].id_camara %>" class="btn btn-info btn-sm" ><i class='fas fa-edit' style='font-size:15px'></i></a>
+                  
+                  <a href="/deletecam/<%= data[i].id_camara %>" class="btn btn-danger btn-sm"  onclick = "if (confirm('¿ESTA SEGURO DE ELIMINAR ESTA CAMARA?')) commentDelete(1); return false"><i class='fas fa-trash-alt' style='font-size:19px'></i></a>
+                </td>
+                <td><a href="/reporte/<%= data[i].id_camara %>" class="btn btn-warning btn-sm "  title="Crear un reporte a esta camara."><i class='far fa-file' style='font-size:19px'></i></a></td>
+              </tr>
+            <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+
+</script>
+
+<!---jquery de la tabla --->
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#ta').DataTable({
+    language: {
+        search: "Buscar:",
+        
+        info:           "Mostrando desde _START_ hasta _END_ de _TOTAL_ registros",
+        infoEmpty:      "Mostrando 0 a 0 de 0 elementos",
+        infoFiltered:   "(Filtrado de _MAX_ entradas totales)",
+        lengthMenu:    "Mostrar _MENU_ registros",
+        zeroRecords:    "No se escontraron datos",
+        emptyTable:     "No hay datos disponibles en la tabla.",
+        paginate: {
+            first:      "Primero",
+            previous:   "Previo",
+            next:       "Siguiente",
+            last:       "Ultimo"
+        }
+    }
+} );
+    
+} );
+
+</script>
+
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+
+<% include partials/_footer %>
+
+
+
+
+
+<!----
+    <div class="col-md-5">
+      <div class="card-body">
+
+        <form action="/add" method="POST">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Name" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="text" name="address" placeholder="Address" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="phone" placeholder="Phone" class="form-control">
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            save customer
+          </button>
+        </form>
+      </div>
+    </div>
+  
+  -->

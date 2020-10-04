@@ -1,0 +1,87 @@
+<% include partials/_header %>
+
+
+<div class="container mt-7">
+    
+    <div class="table-responsive">
+      
+  
+      <table class="table table-bordered table-hover" id="ta" style="font-size: 13px;">
+            
+        <thead>
+          <tr class="table-primary">
+            <td>NOMBRE</td>
+            <td>AP PATERNO</td>
+            <td>AP MATERNO</td>
+            <td>CLAVE</td>
+            <td>CORREO</td>
+            <td>TIPO PERSONAL</td>
+            <td>ACCIONES</td>
+           
+            
+                
+            
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% if (data) { %>
+            <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td><%= data[i].nombre %></td>
+                <td><%= data[i].ap_paterno %></td>
+                <td><%= data[i].ap_materno %></td>
+                <td><%= data[i].clave_personal %></td>
+                <td><%= data[i].username %></td>
+                <td><%= data[i].tipo_usuario %></td>
+                
+                <td>
+                  <a href="/updateusuario/<%= data[i].id_personal %>" class="btn btn-info btn-sm" ><i class='fas fa-edit' style='font-size:15px'></i></a>
+                  
+                  <a href="/deleteusuario/<%= data[i].id_personal %> " class="btn btn-danger btn-sm"  onclick = "if (confirm('¿ESTA SEGURO DE ELIMINAR ESTE PERSONAL?')) commentDelete(1); return false"><i class='fas fa-trash-alt' style='font-size:19px'></i></a>
+                </td>
+                
+            <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  
+  
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+
+</script>
+
+<!---jquery de la tabla --->
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#ta').DataTable({
+    language: {
+        search: "Buscar:",
+        
+        info:           "Mostrando desde _START_ hasta _END_ de _TOTAL_ registros",
+        infoEmpty:      "Mostrando 0 a 0 de 0 elementos",
+        infoFiltered:   "(Filtrado de _MAX_ entradas totales)",
+        lengthMenu:    "Mostrar _MENU_ registros",
+        zeroRecords:    "No se escontraron datos",
+        emptyTable:     "No hay datos disponibles en la tabla.",
+        paginate: {
+            first:      "Primero",
+            previous:   "Previo",
+            next:       "Siguiente",
+            last:       "Ultimo"
+        }
+    }
+} );
+    
+} );
+
+</script>
+
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+
+<% include partials/_footer %>
+

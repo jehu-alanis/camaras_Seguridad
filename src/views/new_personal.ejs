@@ -1,0 +1,71 @@
+<% include partials/_header %>
+<div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>NO lo olvides!</strong> tu respuesta secreta  es la única manera de poder recuperar tu cuenta.
+      </div>
+<div class="container mt-7">
+        <div class="col-md-16">
+    
+                <form action="/addpersonalnew"  name=formulario method="POST">
+          <p style="text-align: center;"><h5>REGISTRO</h5></p>
+                <div class="row">
+                  
+                        <table class="table table-bordered table-hover">
+                        
+                                <tbody>
+                      
+                                <tr class="table-primary">
+                                    <th scope="col " >PERSONAL</th>
+ <input type="hidden" name="id_personal"  value="<%= user.id %>" class="form-control">
+                                  
+                              </tr>
+                                    
+                                           <td>NOMBRE PERSONAL: <div class="form-group"><input type="text" name="nombre"  class="form-control" required></div></td>
+                                            <td>APELLIDO PATERNO: <div class="form-group"><input type="text" name="ap_paterno"  class="form-control" required></div></td>
+                                            <td>APELLIDO MATERNO: <div class="form-group"><input type="text" name="ap_materno"  class="form-control" required></div></td>
+                                       
+                                        <td>CLAVE: <div class="form-group"><input type="text" name="clave_personal"  class="form-control" required></div></td>
+                                
+                                        </tr>
+                                        <tr> 
+
+                                           <td colspan="2">PREGUNTA SECRETA:<div class="form-group">
+                                            
+                                                <select class="custom-select" name="pregunta_secreta">
+                                                        <% for(var i = 0; i < usuario.length; i++) { %> 
+                                                                <option value="<%=usuario[i].idpreguntas %>"><%=usuario[i].nom_preguntas%></option>
+                                                                <% } %>
+                                                </select></div></td>
+                                             
+                                        
+                               
+                                <td>RESPUESTA: <div class="form-group"><input type="text" name="respuesta_secreta"  class="form-control" required></div>
+                                </td>
+                        
+                        
+                      <td>TIPO DE USUARIO:  <div class="form-group">
+                <select class=" mul-select  custom-select " name="id_cat_usuario">
+                                                                                                 
+                          <% for(var i = 0; i < data.length; i++) { %> 
+                 <option value="<%=data[i].id_usuario %>"><%=data[i].tipo_usuario%></option>
+                 <% } %>  </select> </div> </td> 
+                                                                               
+                
+                                                    
+
+                                                     
+                                        
+                                        </tr>
+                                        </tbody>
+                                        </table>
+            
+                                        <button type="submit" class="btn btn-success ml-auto btn-sm"><i class='far fa-save' style='font-size:24px'></i> GUARDAR</button>
+                                        
+        </form>
+            </div>
+        </div>
+
+       
+        
+
+<% include partials/_footer %>

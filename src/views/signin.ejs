@@ -1,0 +1,38 @@
+<% include partials/_headerini %>
+    <div class="container p-4">
+        <div class="row">
+
+    <div class="col-md-4 mx-auto">
+        <div class="card text-center">
+          <div class="card-header">
+
+            <% if(message.length > 0) { %>
+              <div class="alert alert-danger"><%= message %></div> 
+             <% } %>
+               <h3>USER LOGIN</h3>
+
+   <img src="data:image/png;base64,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" alt="Logo " class="card-img-top mx-auto m-2 rounded-circle w-50">
+
+   <form action="/signin" method="POST">
+    <div class="form-group">
+      <input type="text" name="username" placeholder="Correo" class="form-control" autofocus>
+    </div>
+    <div class="form-group">
+      <input type="password" name="password" placeholder="Contraseña" class="form-control">
+    </div>
+    <button class="btn btn-primary btn-block">
+      Acceder
+    </button>
+  </form>
+<hr>
+
+<p> <a href="/recuperar">Recuperar contraseña</a></p>
+
+<p>Necesita una cuenta </p>
+</div>
+ </div>
+</div>
+</div>
+</div>
+
+<% include partials/_footerini %>

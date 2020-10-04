@@ -1,0 +1,80 @@
+<% include partials/_header_tecnico %>
+
+<div class="container mt-5">
+    
+    <div class="table-responsive">
+    
+      <table class="table table-bordered table-hover" id="ta" style="font-size: 11px;" >
+            
+        <thead>
+          <tr class="table-primary "  >
+              <td>SERIE</td>
+              <td>TIPO DE CAMARA</td>
+              <td>RESOLUCION</td>
+              <td>FECHA DE SOLICTUD</td>
+              <td>FECHA DE MANTENIMIENTO</td>
+              <td>TIPO DE MANTENIMIENTO</td>
+              <td>ACCIONES</td>
+            
+          </tr>
+        </thead>
+        
+        <tbody>
+          <% if (data) { %>
+            <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+               
+                  <td><%= data[i].n_serie %></td>
+                  <td><%= data[i].tipo_camara %></td>
+                  <td><%= data[i].name_resolucion %></td>
+                  <td><%= data[i].fecha_solicitud.toISOString().substring(0,10) %></td>
+                  <td><%= data[i].fecha_de_mantenimiento.toISOString().substring(0,10) %></td>
+                  <td><%= data[i].tipo_mantenimiento  %></td>
+                  <td><a href="/cam_man/<%= data[i].id_reporte %>" class="btn btn-warning btn-sm" title="Observar el reporte completo."><i class='fas fa-eye' style='font-size:16px'></i></a>
+            <a href="/update_res/<%= data[i].id_camara %>" class="btn btn-success btn-sm" onclick = "if (confirm('¿ESTA SEGURO DE DAR DE ALTA ESTA CAMARA?')) commentDelete(1); return false" title="Dar de alta la camara."><i class='far fa-calendar-check' style='font-size:15px'></i></a>
+                  </td> 
+     
+           <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+
+</script>
+
+<!---jquery de la tabla --->
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#ta').DataTable({
+    language: {
+        search: "Buscar:",
+        
+        info:           "Mostrando desde _START_ hasta _END_ de _TOTAL_ registros",
+        infoEmpty:      "Mostrando 0 a 0 de 0 elementos",
+        infoFiltered:   "(Filtrado de _MAX_ entradas totales)",
+        lengthMenu:    "Mostrar _MENU_ registros",
+        zeroRecords:    "No se escontraron datos",
+        emptyTable:     "No hay camaras en mantenimiento actualmente.",
+        paginate: {
+            first:      "Primero",
+            previous:   "Previo",
+            next:       "Siguiente",
+            last:       "Ultimo"
+        }
+    }
+} );
+    
+} );
+
+</script>
+
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+
+
+<% include partials/_footer_tecnico %>

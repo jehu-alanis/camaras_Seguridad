@@ -1,0 +1,42 @@
+<% include partials/_header %>
+
+
+<style>
+     .main-container {
+      float: left;
+      position: relative;
+      left: 50%;
+    }
+    .fixer-container {
+      float: left;
+      position: relative;
+      left: -50%;
+    }
+
+     </style>
+ 
+  <h5 class="text-center">CONFIRMACIÓN </h5>
+
+              <form action="/updatema/<%= data.id_camara%>" method="POST">
+
+                    
+                        
+                <input type="hidden" name="id_cat_estado_camara"  value="2" class="form-control">
+               
+                <div class="main-container">
+                    <div class="fixer-container">
+                      <ul class="list-of-floating-elements">
+                          <button type="submit" class="btn btn-success floated btn-sm"><i class='far fa-save' style='font-size:24px'></i> ACCEPTAR</button>
+                          <a href="/deletema/<%= data.id_reporte %>" class="btn btn-danger floated btn-sm " ><i class='fas fa-reply' style='font-size:24px'></i>CANCELAR</a>
+      
+                  
+                      </ul>
+                    </div>
+                  </div>
+              
+              </form>
+              
+       
+      
+<% include partials/_footer %>
+

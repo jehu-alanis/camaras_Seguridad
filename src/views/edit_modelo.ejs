@@ -1,0 +1,43 @@
+<% include partials/_header %>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card">
+      <div class="card-body">
+        <form action="/updatemodelo/<%= data.id_modelo %>" method="POST">
+            <div class="row">
+                  
+                <table class="table table-bordered table-hover">
+                
+                        <tbody>
+              
+                        <tr class="table-primary">
+                            <th scope="col " >MODELO</th>
+                            
+                      </tr>
+                            
+                                  <tr> <td>NOMBRE MODELO: <div class="form-group"><input type="text" name="nombre_modelo" value="<%= data.nombre_modelo%>"  class="form-control" required></div></td>
+                                    <td>MARCA:  <div class="form-group">
+                                            <select class=" mul-select  custom-select " name="id_cat_marca">
+                                                                                         
+                                                     <% for(var i = 0; i < marca.length; i++) { %> 
+                                                             <option value="<%=marca[i].id_marca %>"><%=marca[i].nombre_marca%></option>
+                                                             <% } %>  
+                                                                       
+                                             </select>        </div> </td>
+                           
+                                                                     
+                                </tr>
+                                </tbody>
+                                </table>
+  
+          <button type="submit" class="btn btn-success ml-auto btn-sm"><i class='far fa-save' style='font-size:24px'></i> GUARDAR</button>
+          <a href="/modelonew" class="btn btn-danger float-right btn-sm "><i class='fas fa-reply' style='font-size:24px'></i> CANCELAR</a>
+           
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/_footer %>

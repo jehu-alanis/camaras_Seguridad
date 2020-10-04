@@ -1,0 +1,40 @@
+<% include partials/_headerini %>
+    <div class="container p-4">
+        <div class="row">
+
+    <div class="col-md-4 mx-auto">
+        <div class="card text-center">
+          <div class="card-header">
+
+            <% if(message.length > 0) { %>
+              <div class="alert alert-danger"><%= message %></div> 
+             <% } %>
+
+             <% if(success.length > 0) { %>
+              <div class="alert alert-danger"><%= success %></div> 
+             <% } %>
+
+               <h3>PREGUNTA SECRETA</h3>
+
+   <form action="/validar" >
+    <div class="form-group">
+      <input type="text" name="pregunta_secreta" value="<%= data.nom_preguntas%>" class="form-control" readonly >
+    </div>
+    <div class="form-group">
+      <input type="text" name="respuesta_secreta" placeholder="Respuesta" class="form-control">
+    </div>
+    <button class="btn btn-primary btn-block">
+      Responder
+    </button>
+  </form>
+<hr>
+
+<p> <a href="/">Atras</a></p>
+
+<p>Si no recuerda su respuesta secreta pongase en contacto con el administrador</a></p>
+</div>
+ </div>
+</div>
+</div>
+</div>
+<% include partials/_footerini %>

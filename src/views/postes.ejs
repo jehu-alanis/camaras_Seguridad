@@ -1,0 +1,85 @@
+<% include partials/_header %>
+
+<div class="container mt-7">
+ 
+
+      <div class="table-responsive">
+    
+      <table class="table table-bordered table-hover" id="ta" style="font-size: 11px;">
+          
+        <thead>
+          <tr class="table-primary" >
+            <td>CLAVE</td>
+            <td>CALLE PRINCIPAL</td>
+            <td>CALLE LATERAL 1</td>
+            <td>CALLE LATERAL 2</td>
+            <td>COLONIA</td>
+            <td>LONGITUD</td>
+            <td>LATITUD</td>
+            <td>AÑO INSTALACION</td>
+            <td>ACCIONES</td>
+            <td>CAMARAS</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data) { %>
+            <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+               
+                <td><%= data[i].clave_poste %></td>
+                <td><%= data[i].calle_principal %></td>
+                <td><%= data[i].calle_lateral1 %></td>
+                <td><%= data[i].calle_lateral2 %></td>
+                <td><%= data[i].nombre_col %></td>
+                <td><%= data[i].latitud %></td>
+                <td><%= data[i].longitud %></td>
+                <td><%= data[i].ano_instalacion %></td>
+                
+                <td>
+                  <a href="/updatepos/<%= data[i].id_poste %>" class="btn btn-info btn-sm"><i class='fas fa-edit' style='font-size:15px'></i></a>
+                  <a href="/deletepost/<%= data[i].id_poste %>" class="btn btn-danger btn-sm" onclick = "if (confirm('¿ESTA SEGURO DE ELIMAR ESTE POSTE?')) commentDelete(1); return false"><i class='fas fa-trash-alt' style='font-size:19px'></i></a>
+                </td>
+                <td><a href="/vercam/<%= data[i].id_poste %>" class="btn btn-warning btn-sm" title="Observar las camaras instaladas en este poste."><i class='fas fa-video' style='font-size:15px'></i></a></td>
+              </tr>
+            <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+<% include partials/_footer %>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js">
+
+</script>
+
+<!---jquery de la tabla --->
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#ta').DataTable(
+      {
+    language: {
+        search: "Buscar:",
+        
+        info:           "Mostrando desde _START_ hasta _END_ de _TOTAL_ registros",
+        infoEmpty:      "Mostrando 0 a 0 de 0 elementos",
+        infoFiltered:   "(Filtrado de _MAX_ entradas totales)",
+        lengthMenu:    "Mostrar _MENU_ registros",
+        zeroRecords:    "No se escontraron datos",
+        emptyTable:     "No hay datos disponibles en la tabla.",
+        paginate: {
+            first:      "Primero",
+            previous:   "Previo",
+            next:       "Siguiente",
+            last:       "Ultimo"
+        }
+    }
+}   );
+    
+} );
+
+</script>
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>

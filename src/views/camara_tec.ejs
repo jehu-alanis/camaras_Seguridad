@@ -1,0 +1,45 @@
+<% include partials/_header_tecnico %>
+
+
+<div class="container mt-7">
+    <div class="col-md-16">
+
+      <p style="text-align: center;"><h5>REPORTE DE CAMARA</h5></p>
+            
+    <div class="table-responsive">
+    
+              
+                    <table class="table table-bordered table-hover">
+                    
+                            <tbody>
+                                
+                                      <tr> 
+                                          <td>NUMERO DE SERIE: <div class="form-group"><input type="text" name="n_serie"  value="<%= data.n_serie%>" class="form-control" readonly></div></td>
+                                            <td>VIDA UTIL: <div class="form-group"><input type="text" name="nombre" value="<%= data.vida_util%>"class="form-control" readonly></div></td>
+                                            <td>LONGITUD: <div class="form-group"><input type="text"  name="ap_paterno" value="<%= data.longitud%>" class="form-control"readonly></div></td>
+                                            <td>LATITUD: <div class="form-group"><input type="text" name="ap_materno" value="<%= data.latitud%>" class="form-control"readonly></div></td>
+                                                     
+    
+                                      </tr>
+                                      <tr>
+                                               <td>FECHA DE SOLICITUD: <div class="form-group"><input type="text" name="nombre" value="<%= data.fecha_solicitud.toISOString().substring(0,10)%>"class="form-control"readonly></div></td>
+                                            <td>FECHA DE MANTENIMIENTO: <div class="form-group"><input type="text"  name="ap_paterno" value="<%= data.fecha_de_mantenimiento.toISOString().substring(0,10)%>" class="form-control"readonly></div></td>
+                                            <td>TIPO DE MANTENIMIENTO: <div class="form-group"><input type="text" name="ap_materno" value="<%= data.tipo_mantenimiento %>"class="form-control"readonly></div></td>
+                                              <td>OBSERVACIONES: <div class="form-group"><input type="text" name="curp"  value="<%= data.observaciones%>"class="form-control"readonly></div></td>
+                                              
+                                      </tr>
+                
+                                    </tbody>
+                                    </table>
+                                    
+      <a href="/mantenimientos_te" class="btn btn-danger btn-sm "><i class='fas fa-reply' style='font-size:24px'></i> ATRAS</a>
+        
+    </div>
+    </div>
+
+
+
+
+
+
+<% include partials/_footer_tecnico %>

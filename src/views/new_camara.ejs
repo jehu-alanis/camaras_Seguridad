@@ -1,0 +1,127 @@
+<% include partials/_header %>
+
+
+<div class="container mt-2">
+        <div class="col-md-16">
+    
+                <form action="/addcamara"  name=formulario method="POST">
+         
+                  <div class="table-responsive">
+                  
+                        <table class="table table-bordered table-hover">
+                        
+                                <tbody>
+                      
+                                <tr class="table-primary">
+                                    <th scope="col " >CAMARA</th>
+                                    
+                              </tr>
+                                    
+                                          <tr> <td>N SERIE: <div class="form-group"><input type="text" name="n_serie"  class="form-control" required></div></td>
+                                               
+        <td>MODELO:  <div class="form-group">
+               <select class=" mul-select  custom-select " name="id_cat_modelo">
+                                                            
+                        <% for(var i = 0; i < data.length; i++) { %> 
+                                <option value="<%=data[i].id_modelo %>"><%=data[i].nombre_modelo %></option>
+                                <% } %>  
+                                          
+                </select>        </div> </td> 
+
+
+                  <td>PROVEDOR:  <div class="form-group">
+                    <select class=" mul-select  custom-select" name="id_cat_proveedor">
+                                                            
+                        <% for(var i = 0; i < custo.length; i++) { %> 
+                                <option value="<%=custo[i].id_proveedores %>"><%=custo[i].nombre_provedor %></option>
+                                <% } %>  
+                                          
+                </select></div> </td>
+                                                                                                         
+                </tr>
+                                     <tr>
+     <td>VIDA UTIL: <div class="form-group"><input type="number" min="1"name="vida_util" class="form-control"required></div></td>                                            
+   <td>LONGITUD: <div class="form-group"><input type="text" name="latitud" class="form-control"required></div></td>
+                                          <td>LATITUD: <div class="form-group"><input type="text" name="longitud"  class="form-control" required></div></td>
+                                          
+                                          <input type="hidden" name="id_cat_estado_camara"  value="1" class="form-control">
+                                        </tr>
+                                            
+                                        <tr> <td>TIPO DE CAMARA:  <div class="form-group">
+                                            <select class=" mul-select  custom-select " name="id_cat_tipo_camara">
+                                                                                         
+                                                     <% for(var i = 0; i < tipo.length; i++) { %> 
+                                                             <option value="<%=tipo[i].id_tipo %>"><%=tipo[i].tipo_camara %></option>
+                                                             <% } %>  
+                                                                       
+                                             </select>        </div> </td>  
+                                            <td>RESOLUCION:  <div class="form-group">
+                                                   <select class=" mul-select  custom-select " name="id_cat_resolucion">
+                                                                                                
+                                                            <% for(var i = 0; i < resolucion.length; i++) { %> 
+                                                                    <option value="<%=resolucion[i].id_resolucion %>"><%=resolucion[i].name_resolucion %></option>
+                                                                    <% } %>  
+                                                                              
+                                                    </select>        </div> </td> 
+                                    
+                                    
+                                                      <td>POSTE:  <div class="form-group">
+                                                        <select class=" mul-select  custom-select" name="id_cat_poste">
+                                                                                                
+                                                            <% for(var i = 0; i < poste.length; i++) { %> 
+                                                                    <option value="<%=poste[i].id_poste %>"><%=poste[i].clave_poste %></option>
+                                                                    <% } %>  
+                                                                              
+                                                    </select></div> </td>
+                                                    
+                     
+                                          <tr>
+                                            <td colspan="2"><div><label for="exampleTextarea">DESCRIPCION:</label> <textarea class="form-control" id="exampleTextarea" name="descripcion" rows="3"></textarea>
+                                            </div></td>
+                                          </tr>
+                                         
+                    
+                                        </tbody>
+                                        </table>
+            
+                                        <button type="submit" class="btn btn-success ml-auto btn-sm"><i class='far fa-save' style='font-size:24px'></i> GUARDAR</button>
+                                        <a href="/camaras" class="btn btn-danger btn-sm "><i class='fas fa-reply' style='font-size:24px'></i> CANCELAR</a>
+                                       
+        </form>
+            </div>
+        </div>
+      </div>
+
+       
+        
+
+        
+        <script>
+                        $(document).ready(function(){
+                            $(".mul-select").select2({
+                                    placeholder: "selecciona"
+                                    
+                                     //placeholder
+                                    
+                                });
+                            })
+                    </script>
+   
+
+   <script>
+        function selectselect(element)
+        {
+            element.size = element.options.length;
+            element.style.zIndex = "500";
+    
+        }
+    
+        function selecthide(element)
+        {
+            element.size = 2;
+            element.style = "";
+        }
+    
+    </script>
+
+<% include partials/_footer %>
